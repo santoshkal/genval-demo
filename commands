@@ -1,0 +1,37 @@
+# Demo commands
+
+
+## Dockerfile generation and validation
+
+```shell
+./genval dockerfile --reqinput ./input-templates/dockerfile_input/clang_input.json \
+--output ./output/Dockerfile-save \
+--inputpolicy ./defaultpolicies/rego/input_policies/ \
+--outputpolicy ./defaultpolicies/rego/dockerfile_policies
+```
+
+
+## Validating available Dockerfile
+
+```shell
+./genval regoval dockerfileval --reqinput ./Dockerfile \
+--policy ./defaultpolicies/rego/dockerfile_policies
+```
+
+## Validating Kubernetes manifests
+
+```shell
+ ./genval regoval infrafile --reqinput ./input-templates/k8s/deployment.json \
+ --policy ./defaultpolicies/rego/infrafile_policies
+ ```
+
+
+## Validating with CEL policies
+
+```shell
+./genval celval infrafile --reqinput ./input-templates/k8s/deployment.json \
+--policy ./defaultpolicies/cel/k8s_cel.yaml
+```
+
+## Push policies, generated/validated config files to OCI registries
+
