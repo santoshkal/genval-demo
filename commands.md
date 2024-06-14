@@ -49,6 +49,41 @@ genval regoval terraform --reqinput ./input-templates/terraform/sec_group.tf \
 
 ## Push policies, generated/validated config files to OCI registries
 
+### A Note on Genval's Authentication mechanism with Container registries 
+
+To facilitate authentication with container registries, Genval follows this process:
+
+- Environment Variables for Username and Password:
+
+    - Genval checks for the environment variables `ARTIFACT_REGISTRY_USERNAME` and `ARTIFACT_REGISTRY_PASSWORD` for authentication.
+
+- Environment Variable for **Token**:
+
+    - If the **Username** and **Password** environment variables are not found, Genval will then look for the environment variable `ARTIFACT_REGISTRY_TOKEN`.
+
+- Docker Configuration File:
+
+    - If none of the above environment variables are set, Genval will check for the default Docker configuration file located at `$HOME/.docker/config.json` for authentication credentials.
+
+
+      Some times with `.docker/config.json` users may encounter some errors while interacting with registries. Please login and logout from registry account to resolve the issue:
+
+  - **Login to Container Registry**:
+  
+    `echo <GITHUB PAT> | echo docker login ghcr.io -u <username> --password-stdin>`
+
+    once login try performing push/pull operations. if succeeds. Great!!!
+
+    If not, Try following:
+
+  - **Logout from Container Registry**:
+ 
+    `docker logot ghcr.io`
+
+    This step should authenticate and allow you to perform push/pull actions on the registry, provided your credentials were passed in correctly.
+
+    Please ensure that at least one of these authentication mechanisms is set up when interacting with container registries.
+
 ```shell
 ./genval artifact push --reqinput ./defaultpolicies/rego/dockerfile_policies/ \
 --dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
