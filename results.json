@@ -1,20 +1,11 @@
 [
   {
     "id": "1",
-    "policyName": "Check image with latest tag",
-    "status": "\u001b[32mPassed\u001b[0m",
-    "description": "Deny Images with latest tag",
-    "severity": "Critical",
-    "benchmark": "XYZ",
-    "category": ""
-  },
-  {
-    "id": "2",
-    "policyName": "Check replicas in a Deployment",
-    "status": "\u001b[31mFailed\u001b[0m",
-    "description": "Ensure that Deployment has at most 3 replicas",
+    "policyName": "deny_global_ingress",
+    "status": "passed",
+    "description": "Ensure AWS security group does not allow ingress from internet",
     "severity": "High",
-    "benchmark": "ABC",
-    "category": ""
+    "benchmark": "TBD",
+    "category": "Infrastructure security"
   }
 ]

@@ -1,10 +1,15 @@
 # Demo commands
 
+#### Genval executable from main branch  commit-hash: c52ebb0
+
 
 ## Dockerfile generation and validation
 
+All the policies and input can also be provided from Remote URLs like Github as well.
+A auth needs to be set up for genval to communicate with remote for pulling the input and policies.
+This is how you can do that:
 
-#### Genval executable from main branch
+`export GITHUB_TOEN=<Your GITHUB TOEN>`
 
 ```shell
 ./genval dockerfile --reqinput ./input-templates/dockerfile_input/clang_input.json \
@@ -28,6 +33,12 @@
  --policy ./defaultpolicies/rego/infrafile_policies
  ```
 
+## Validating Terraform files with Rego Policies
+
+```shell
+genval regoval terraform --reqinput ./input-templates/terraform/sec_group.tf \
+--policy ./defaultpolicies/rego/terraform_policies/terraform
+```
 
 ## Validating with CEL policies
 
