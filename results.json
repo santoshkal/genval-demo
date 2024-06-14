@@ -1,11 +1,38 @@
 [
   {
     "id": "1",
-    "policyName": "deny_global_ingress",
-    "status": "passed",
-    "description": "Ensure AWS security group does not allow ingress from internet",
+    "policyName": "check_cpu_limits",
+    "status": "failed",
+    "description": "Ensure CPU limits are set on a Deployment",
     "severity": "High",
-    "benchmark": "TBD",
+    "benchmark": "NA",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "2",
+    "policyName": "deny_latest_tag",
+    "status": "passed",
+    "description": "Ensure that the container does not use latest tag",
+    "severity": "High",
+    "benchmark": "CIS-4.2",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "3",
+    "policyName": "deny_priviliged_pod",
+    "status": "failed",
+    "description": "Ensure that the Deployment does not use a priviliged Pod",
+    "severity": "High",
+    "benchmark": "NA",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "4",
+    "policyName": "deny_secret_env",
+    "status": "passed",
+    "description": "Ensure that the container does not use secret from Env",
+    "severity": "High",
+    "benchmark": "NA",
     "category": "Infrastructure security"
   }
 ]
