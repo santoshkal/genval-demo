@@ -36,7 +36,7 @@ This is how you can do that:
 ## Validating Terraform files with Rego Policies
 
 ```shell
-genval regoval terraform --reqinput ./input-templates/terraform/sec_group.tf \
+./genval regoval terraform --reqinput ./input-templates/terraform/sec_group.tf \
 --policy ./defaultpolicies/rego/terraform_policies/terraform
 ```
 
@@ -78,7 +78,7 @@ To facilitate authentication with container registries, Genval follows this proc
 
   - **Logout from Container Registry**:
  
-    `docker logot ghcr.io`
+    `docker logout ghcr.io`
 
     This step should authenticate and allow you to perform push/pull actions on the registry, provided your credentials were passed in correctly.
 
@@ -92,7 +92,7 @@ To facilitate authentication with container registries, Genval follows this proc
 ```
 ### Output:
 ```shell
-➜  genval-demo git:(main) ✗ ./genval artifact push --reqinput ./defaultpolicies/rego/dockerfile_policies/ \
+➜  ./genval-demo git:(main) ✗ ./genval artifact push --reqinput ./defaultpolicies/rego/dockerfile_policies/ \
 --dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
 --sign true \
 --annotations "author=santoshkal@intelops.dev"
@@ -129,7 +129,7 @@ INFO[0027] Digest URL: ghcr.io/santoshkal/policyhub/dockerfile-policies@sha256:d
 ### Output
 > The contents of the artifact will be extracted in the directory provided in the `path` flag, `./output` in above command. 
 ```shell
-➜  genval-demo git:(main) ✗ ./genval artifact pull --dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
+➜  ./genval-demo git:(main) ✗ ./genval artifact pull --dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
 > --path ./output \
 > --verify true
 ⣯ Verifying artifact
