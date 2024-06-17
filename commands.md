@@ -66,15 +66,15 @@ To facilitate authentication with container registries, Genval follows this proc
     - If none of the above environment variables are set, Genval will check for the default Docker configuration file located at `$HOME/.docker/config.json` for authentication credentials.
 
 
-      Some times with `.docker/config.json` users may encounter some errors while interacting with registries. Please login and logout from registry account to resolve the issue:
+      Sometimes with `.docker/config.json` users may encounter some errors while interacting with registries. Please login and logout from the registry account to resolve the issue:
 
   - **Login to Container Registry**:
   
     `echo <GITHUB PAT> | echo docker login ghcr.io -u <username> --password-stdin>`
 
-    once login try performing push/pull operations. if succeeds. Great!!!
+    Once login, try to perform push/pull operations, and if it succeeds. Great!!!
 
-    If not, Try following:
+    If not, Try the following:
 
   - **Logout from Container Registry**:
  
@@ -153,7 +153,7 @@ Create a workspace using `cuemod` command for working with cue:
 
 Now place all the policies `.cue` policis files under `./K8S_1.29/extracted_content/policy` directory and provide the path to `--policy` flag while using `cue` command as following:
 
-Generate application kubernetes configuration from bare minimum config files :
+Generate application Kubernetes configuration from bare minimum config files :
 > **Due to some breaking changes in `cue:v0.9.0` on 12th June some functionality has changed.**
 
 ```shell
