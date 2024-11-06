@@ -1,11 +1,101 @@
 [
   {
     "id": "1",
-    "policyName": "deny_global_ingress",
+    "policyName": "check_cmd",
     "status": "passed",
-    "description": "Ensure AWS security group does not allow ingress from internet",
-    "severity": "High",
+    "description": "Ensure there is only one CMD instruction in a Dockerfile, if more the last CMD will take effect",
+    "severity": "Low",
     "benchmark": "TBD",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "2",
+    "policyName": "check_entrypoint",
+    "status": "passed",
+    "description": "Ensure there is only one ENTRYPOINT instruction in a Dockerfile, if more the last ENTRYPOINT will take effect",
+    "severity": "Low",
+    "benchmark": "TBD",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "3",
+    "policyName": "check_healthcheck",
+    "status": "failed",
+    "description": "Ensure that HEALTHCHECK is being used to indicate container health",
+    "severity": "Low",
+    "benchmark": "TBD",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "4",
+    "policyName": "deny_add",
+    "status": "passed",
+    "description": "Ensure that COPY is used instead of ADD in Dockerfiles",
+    "severity": "High",
+    "benchmark": "CIS-4.9",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "5",
+    "policyName": "deny_caching",
+    "status": "passed",
+    "description": "Ensure cache is invalidated in update instructions",
+    "severity": "High",
+    "benchmark": "CIS-4.7",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "6",
+    "policyName": "deny_root_user",
+    "status": "passed",
+    "description": "Ensure that the Dockerfile for the container image contains USER instruction",
+    "severity": "Critical",
+    "benchmark": "CIS-4.1",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "7",
+    "policyName": "deny_sudo",
+    "status": "passed",
+    "description": "Ensure sudo is not used in RUN instructions",
+    "severity": "Critical",
+    "benchmark": "CIS-4.1",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "8",
+    "policyName": "deny_port_22",
+    "status": "passed",
+    "description": "Expose only the ports that your application needs and avoid exposing ports like SSH (22)",
+    "severity": "Low",
+    "benchmark": "TBD",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "9",
+    "policyName": "invalidate_cache",
+    "status": "failed",
+    "description": "Ensure 'RUN' should not contain 'apk add' command without '--no-cache' switch",
+    "severity": "High",
+    "benchmark": "CIS-4.7",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "10",
+    "policyName": "trusted_base_image",
+    "status": "passed",
+    "description": "Use hardened and secure base image from Chainguard",
+    "severity": "High",
+    "benchmark": "CIS-4.2",
+    "category": "Infrastructure security"
+  },
+  {
+    "id": "11",
+    "policyName": "user_defined",
+    "status": "passed",
+    "description": "Ensure that a user for the container has been created",
+    "severity": "High",
+    "benchmark": "CIS-4.1",
     "category": "Infrastructure security"
   }
 ]
