@@ -86,14 +86,14 @@ To facilitate authentication with container registries, Genval follows this proc
 
 ```shell
 ./genval artifact push --reqinput ./defaultpolicies/rego/dockerfile_policies/ \
---dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
+--dest oci://ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
 --sign true \
 --annotations "authors=ksantoshkal@intelops.dev
 ```
 ### Output:
 ```shell
 ➜  ./genval-demo git:(main) ✗ ./genval artifact push --reqinput ./defaultpolicies/rego/dockerfile_policies/ \
---dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
+--dest oci://ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
 --sign true \
 --annotations "author=santoshkal@intelops.dev"
 INFO[0000] Building artifact from: ./defaultpolicies/rego/dockerfile_policies/ 
@@ -122,14 +122,14 @@ INFO[0027] Digest URL: ghcr.io/santoshkal/policyhub/dockerfile-policies@sha256:d
 ## Verify and pull an artifact from OCI registry
 
 ```shell
-./genval artifact pull --dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
+./genval artifact pull --dest oci://ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
 --path ./output \
 --verify true
 ```
 ### Output
 > The contents of the artifact will be extracted in the directory provided in the `path` flag, `./output` in above command. 
 ```shell
-➜  ./genval-demo git:(main) ✗ ./genval artifact pull --dest ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
+➜  ./genval-demo git:(main) ✗ ./genval artifact pull --dest oci://ghcr.io/santoshkal/policyhub/dockerfile-policies:v0.0.1 \
 > --path ./output \
 > --verify true
 ⣯ Verifying artifact
@@ -157,7 +157,7 @@ Generate application Kubernetes configuration from bare minimum config files :
 > **Due to some breaking changes in `cue:v0.9.0` on 12th June some functionality has changed.**
 
 ```shell
-./genval cue --source ./cuelang/k8s/ \               
+./genval cue --reqinput ./cuelang/k8s \               
 --resource Application \
 --policy ./cuelang/policy/
 ```
